@@ -30,7 +30,7 @@ status add(hash arr[],char *ph_num, char *name)
     {
         char *temp;
         long num = strtol(ph_num, &temp, 10);
-        if( num < 1000000000L)
+        if( num < 1000000000L || num > 9999999999L)
             {
                 printf("Enter a 10 digit phone number\n");
                 return Add_FAIL;

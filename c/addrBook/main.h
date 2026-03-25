@@ -1,8 +1,11 @@
 #include "../../lib/input/input.h"
 #include "../../lib/strtomat/strtomat.h"
 #include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+
 typedef enum {
-    _Import,
+    _Import = 1,
     _Export,
     _Add,
     _Delete,

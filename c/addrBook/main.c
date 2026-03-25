@@ -25,9 +25,16 @@ int main()
                     print_table(arr);
                     break;
                 case _Import:
+                    {
+                        char filename[31];
+                        import_(arr, getstr(filename, 31, "Enter filename:"));
+                    }
                     break;
                 case _Export:
-
+                    {
+                        char filename[31];
+                        export_(arr, getstr(filename, 31, "Enter filename:"));
+                    }
                     break;
                 case _Ext:
                     return 0;
