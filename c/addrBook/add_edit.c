@@ -31,7 +31,7 @@ static status travel_bintree(personal_info **node, long num, char *name)
             }
             
     }
-status add_edit(hash arr[],char *ph_num, char *name)
+status add(hash arr[],char *ph_num, char *name)
     {
         char *temp;
         long num = strtol(ph_num, &temp, 10);

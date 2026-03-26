@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 static void travel_bintree(personal_info **node)
     {
         if(*node == NULL)
@@ -13,7 +11,7 @@ static void travel_bintree(personal_info **node)
 status print_table(hash arr[])
     {
         system("clear");
-        for(int i = 0; i < 9; i++)
+        for(int i = 0; i < HASHLEN; i++)
             {
                 if(arr[i].hash_node != NULL)
                     travel_bintree(&arr[i].hash_node);

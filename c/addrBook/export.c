@@ -1,7 +1,4 @@
 #include "main.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
 
 static int parse_file(char *filename)
     {
@@ -45,6 +42,7 @@ static void travel_bintree(personal_info **node, int fd)
         write(fd, ",", 1);
         sprintf(buffer,"%ld",(*node)->number);
         write(fd, buffer, strlen(buffer));
+        write(fd, "\n", 1);
         travel_bintree(&(*node)->right,fd);
         
     }
@@ -60,7 +58,7 @@ status export_(hash arr[], char *filename)
             }
             
         write(fd,"Name,Number\n",12);
-        for(int i = 0; i < 9; i++)
+        for(int i = 0; i < HASHLEN; i++)
             {
                 if(arr[i].hash_node != NULL)
                     travel_bintree(&arr[i].hash_node,fd);

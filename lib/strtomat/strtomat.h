@@ -7,4 +7,4 @@ typedef struct
         char **argv;
     }strmat;
 
-strmat strtomat(char *str, char token);
+strmat strtomat(char *destructive_str, char token);

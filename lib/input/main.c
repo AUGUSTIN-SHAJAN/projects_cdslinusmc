@@ -4,7 +4,7 @@ int main()
     {
         
         char str[11];
-        printf("%s",getstr_num(str, 11, "Enter:"));
+        printf("%s",getstr_alpha_(str, 11, "Enter:"));
 
     }
     

@@ -4,12 +4,12 @@
 #include <fcntl.h>
 #include <errno.h>
 
+#define HASHLEN 27
 typedef enum {
     _Import = 1,
     _Export,
     _Add,
     _Delete,
-    _Edit,
     _Search,
     _Print_Table,
     _Ext
@@ -38,7 +38,7 @@ typedef enum {
 status import_(hash arr[], char *filename);
 status export_(hash arr[], char *filename);
 
-status add(hash arr[],char *ph_num, char *name);
-
+status add_edit(hash arr[],char *ph_num, char *name);
+status search(hash arr[], char *name);
 
 status print_table(hash arr[]);

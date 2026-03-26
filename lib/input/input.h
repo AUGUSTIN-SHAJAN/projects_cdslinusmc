@@ -5,3 +5,4 @@
 char *getstr(char *str, int strlenPlusOne, char *prompt);
 long getlong(char *prompt);
 char *getstr_num(char *str, int strlenPlusOne, char *prompt);
+char *getstr_alpha_(char *str, int strlenPlusOne, char *prompt);
