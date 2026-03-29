@@ -3,8 +3,9 @@ static void travel_bintree(personal_info **node)
     {
         if(*node == NULL)
             return;
-        travel_bintree(&(*node)->left);
         printf("name: %s num: %ld\n", (*node)->name,(*node)->number);
+        travel_bintree(&(*node)->left);
+        //printf("name: %s num: %ld\n", (*node)->name,(*node)->number);
         travel_bintree(&(*node)->right);
         
     }

@@ -18,6 +18,13 @@ int main()
                     }
                     break;
                 case _Delete:
+                    {
+                        system("clear");
+                        printf("Delete\n");
+                        char name[31];
+                        delete_(arr, getstr_alpha_(name, 31, "Name:"));
+                                      
+                    }
                     break;
                 case _Search:
                     {

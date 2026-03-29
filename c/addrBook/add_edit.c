@@ -7,7 +7,7 @@ static personal_info *alloc(long num, char *name)
         personal_info *temp = malloc(sizeof(*temp));
         if(temp == NULL)
             return NULL;
-        temp->left = temp->prev = temp->right = NULL;
+        temp->left = temp->right = NULL;
         temp->name = strdup(name);
         temp->number = num;
         return temp;

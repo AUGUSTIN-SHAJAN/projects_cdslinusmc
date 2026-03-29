@@ -36,13 +36,14 @@ static void travel_bintree(personal_info **node, int fd)
     {
         if(*node == NULL)
             return;
-        travel_bintree(&(*node)->left,fd);
+        // travel_bintree(&(*node)->left,fd);
         char buffer[65]={0};
         write(fd, (*node)->name, strlen((*node)->name));
         write(fd, ",", 1);
         sprintf(buffer,"%ld",(*node)->number);
         write(fd, buffer, strlen(buffer));
         write(fd, "\n", 1);
+        travel_bintree(&(*node)->left,fd);
         travel_bintree(&(*node)->right,fd);
         
     }
