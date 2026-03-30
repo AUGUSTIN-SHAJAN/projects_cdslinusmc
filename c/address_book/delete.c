@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 static personal_info **findmin(personal_info **node)
     {
@@ -35,14 +36,17 @@ static status travel_bintree(personal_info **node, char *name)
             }
         else
             {
+                printf("%p\n",node);
                 personal_info **temp = findmin(&(*node)->right);
+                printf("%p\n",temp);
                 free((*node)->name);
                 (*node)->name = (*temp)->name;
                 (*node)->number = (*temp)->number;
                 personal_info *hold = *temp;
                 *temp = (*temp)->right;
                 free(hold);
-
+                printf("Press Enter to exit\n");
+                getchar();
             }
         return Add_SUCCESS;
     }
