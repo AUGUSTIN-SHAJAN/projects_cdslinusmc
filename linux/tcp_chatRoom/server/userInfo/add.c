@@ -1,11 +1,8 @@
-#include "../main.h"
+
 #include "userInfo.h"
-#include <stdio.h>
-#include <string.h>
 
 
-
-static user_personal_info *alloc(char *password, char *uname)
+static user_personal_info *alloc(char *password, char *uname,int fd)
     {
         user_personal_info *temp = malloc(sizeof(*temp));
         if(temp == NULL)
@@ -13,37 +10,39 @@ static user_personal_info *alloc(char *password, char *uname)
         temp->left = temp->right = NULL;
         temp->uname = strdup(uname);
         temp->password = strdup(password);
+        temp->fd =fd;
         return temp;
     }
-static userCRUD travel_bintree(user_personal_info **node, char *password, char *uname)
+static user_personal_info *travel_bintree(user_personal_info **node, char *password, char *uname, int fd)
     {
         
         if(*node == NULL)
             {
-                *node = alloc(password, uname);
-                return SUCCESS;
+                *node = alloc(password, uname,fd);
+                return *node;
             }
         else if(strcmp(uname, (*node)->uname) < 0)
-            return travel_bintree(&(*node)->left,password,uname);
+            return travel_bintree(&(*node)->left,password,uname,fd);
         else if(strcmp(uname, (*node)->uname) > 0)
-            return travel_bintree(&(*node)->right,password,uname);
+            return travel_bintree(&(*node)->right,password,uname,fd);
         else
             {
-                printf("This user exist\n");
-                return FAIL;
+                if(strcmp(password, (*node)->password))
+                    return NULL;
+                return *node;
             }
             
     }
-userCRUD add(user_store_hash arr[],char *password, char *uname)
+user_personal_info *add(user_store_hash arr[],char *password, char *uname,int fd)
 
     {
         if(strlen(password) < 4 || strlen(uname) < 4)
             {
                 printf("Minimum length 4 for both name and password\n");
-                return FAIL;
+                return NULL;
             }
         if(uname[0] >= 'a' && uname[0] <= 'z')
-            return travel_bintree(&arr[uname[0] - 'a'].hash_node, password, uname);
+            return travel_bintree(&arr[uname[0] - 'a'].hash_node, password, uname, fd);
         else
-            return travel_bintree(&arr[26].hash_node, password, uname);
+            return travel_bintree(&arr[26].hash_node, password, uname,fd);
     }

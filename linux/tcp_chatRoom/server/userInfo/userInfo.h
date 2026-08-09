@@ -13,11 +13,9 @@ typedef struct user_personal_info
     {
         char *password;
         char *uname;
-        long ph_num;
-        char *ip;
-        int port;
         struct user_personal_info *left;
         struct user_personal_info *right;
+        int fd;
     }user_personal_info;
 
 typedef struct user_store_hash
@@ -28,6 +26,7 @@ typedef struct user_store_hash
 typedef enum {
     SUCCESS,
     FAIL,
+    PASSWRONG
 }userCRUD;
 
 
@@ -35,8 +34,8 @@ typedef enum {
 userCRUD import_(user_store_hash arr[], char *filename);
 userCRUD export_(user_store_hash arr[], char *filename);
 
-userCRUD add(user_store_hash arr[],char *password, char *uname);
-userCRUD search(user_store_hash arr[], char *uname);
+user_personal_info *add(user_store_hash arr[],char *password, char *uname,int fd);
+int search(user_store_hash arr[], char *uname);
 userCRUD delete_(user_store_hash arr[],char *uname);
 userCRUD print_table(user_store_hash arr[]);
 #endif

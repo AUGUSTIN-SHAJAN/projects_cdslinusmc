@@ -1,5 +1,5 @@
-#include "../main.h"
 
+#include "userInfo.h"
 static user_personal_info **findmin(user_personal_info **node)
     {
         while((*node)->left)

@@ -1,11 +1,12 @@
-#include "../main.h"
-static userCRUD travel_bintree(user_personal_info **node, char *uname)
+
+#include "userInfo.h"
+static int travel_bintree(user_personal_info **node, char *uname)
     {
         
         if(*node == NULL)
             {
                 printf("Not found\n");
-                return FAIL;
+                return -1;
             }
         else if(strcmp(uname, (*node)->uname) < 0)
             return travel_bintree(&(*node)->left,uname);
@@ -14,11 +15,11 @@ static userCRUD travel_bintree(user_personal_info **node, char *uname)
         else
             {
                 printf("name: %s pass: %s\n", (*node)->uname,(*node)->password);
-                return SUCCESS;
+                return (*node)->fd;
             }
             
     }
-userCRUD search(user_store_hash arr[], char *uname)
+int search(user_store_hash arr[], char *uname)
     {
         
         if(uname[0] >= 'a' && uname[0] <= 'z')

@@ -2,14 +2,14 @@ CC = gcc
 CFLAGS = -Wall -Wextra -g
 
 SRC = $(wildcard *.c)					\
-		$(wildcard userInfo/*.c)		\
 		../../../lib/input/input.c		\
-		../../../lib/strtomat/strtomat.c\
-		../../../lib/parse_file/parse_file.c\
-		$(wildcard serverFunk/*.c)
+		$(wildcard clientFunk/*.c)		\
+# 		../../../lib/strtomat/strtomat.c\
+# 		../../../lib/parse_file/parse_file.c
+		
 OBJ = $(SRC:.c=.o)
 
-TARGET = server
+TARGET = client
 
 all: $(TARGET)
 
@@ -22,4 +22,4 @@ $(TARGET): $(OBJ)
 clean:
 	rm -f $(OBJ)
 run:
-	./server
+	./client 127.0.0.1

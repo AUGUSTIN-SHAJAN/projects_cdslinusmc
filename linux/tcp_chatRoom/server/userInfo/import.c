@@ -1,10 +1,11 @@
-#include "../main.h"
+
+#include "userInfo.h"
 
 static int parse_line(user_store_hash arr[],char *line)
     {
         strmat temp = strtomat(line, ',');
         
-        add(arr, temp.argv[1], temp.argv[0]);
+        add(arr, temp.argv[1], temp.argv[0],0);
         
         free(temp.argv);
         return 1;
